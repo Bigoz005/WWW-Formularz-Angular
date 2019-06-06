@@ -1,0 +1,6 @@
+<ng-container *ngIf="inputObj">
+    <app-indicator-dot [color]="inputObj.color"></app-indicator-dot>
+    <label [ngClass]="{ 'second-class': secondClass }" [for]="inputObj.placeholder">{{ inputObj.label }}</label>
+    <input [type]="inputObj.type || 'text'" [pattern]="inputObj.pattern" [required]="true" [placeholder]="inputObj.placeholder" [(ngModel)]="inputObj.value" (input)="onChange.emit()">
+</ng-container>
+<ng-content></ng-content>

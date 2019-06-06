@@ -1,0 +1,6 @@
+<ng-container *ngIf="language">
+    <app-indicator-dot [color]="language.color"></app-indicator-dot>
+    <label [for]="language.value">{{ language.label }}</label>
+    <input type="checkbox" [value]="language.value" [(ngModel)]="language.checked" (change)="onChange.emit()">
+</ng-container>
+<ng-content></ng-content>

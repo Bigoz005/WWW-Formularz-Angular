@@ -1,0 +1,11 @@
+label {
+    min-width: 50px;
+    display: inline-block;
+    margin-left: 4px;
+}
+
+.second-class {
+    min-width: 110px;
+    display: inline-block;
+    margin-left: 4px;
+}

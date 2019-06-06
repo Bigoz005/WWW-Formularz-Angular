@@ -1,0 +1,78 @@
+<div class="content">
+    <form action="" method="POST" class="dokument" name="dokument">
+
+        <!-- <progress value="0" max="12" id="progress"></progress> -->
+        <app-progress-bar [value]="currentProgress"></app-progress-bar>
+
+        <div class="krok_1" #step1>
+            <hr />
+            <h3>Wybierz trzy języki programowania, których zamierzasz się uczyć</h3>
+            <hr />
+            <div class="menu">
+                <app-language-checkbox *ngFor="let language of availableLanguages;let i = index" [language]="language" (onChange)="onLanguageChange(i)">
+                    <br>
+                </app-language-checkbox>
+            </div>
+        </div>
+
+        <div class="krok_2" #step2>
+            <hr />
+            <h3>Wypełnij dane osobowe</h3>
+            <hr />
+            <div class="menu">
+                <app-input-wrapper *ngFor="let input of firstInputs;let i = index" [inputObj]="input" [secondClass]="true" (onChange)="onInputsChange(i, firstInputs)">
+                    <br>
+                </app-input-wrapper>
+
+                <app-indicator-dot [color]="selectedProvince.color"></app-indicator-dot>
+                <label for="wojewodztwo">Województwo</label>
+                <select [required]="true" [(ngModel)]="selectedProvince.value" (change)="onProvinceSelected($event)" [ngModelOptions]="{standalone: true}">
+                    <option value="0">Wybierz..</option>
+                    <option value="1">Dolnośląskie</option>
+                    <option value="2">Kujawsko-Pomorskie</option>
+                    <option value="3">Lubelskie</option>
+                    <option value="4">Lubuskie</option>
+                    <option value="5">Łódzkie</option>
+                    <option value="6">Małopolskie</option>
+                    <option value="7">Mazowieckie</option>
+                    <option value="8">Opolskie</option>
+                    <option value="9">Podkarpackie</option>
+                    <option value="10">Podlaskie</option>
+                    <option value="11">Pomorskie</option>
+                    <option value="12">Śląskie</option>
+                    <option value="13">Świętokrzyskie</option>
+                    <option value="14">Warmińsko-Mazurskie</option>
+                    <option value="15">Wielkopolskie</option>
+                    <option value="16">Zachodniopomorskie</option>
+                </select>
+                <br>
+            </div>
+        </div>
+
+        <div class="krok_3" #step3>
+            <hr />
+            <h3>Wypełnij dane osobowe (wszystkie pola są obowiązkowe)</h3>
+            <hr />
+            <div class="menu">
+                <app-input-wrapper *ngFor="let input of secondInputs;let i = index" [inputObj]="input" (onChange)="onInputsChange(i, secondInputs)">
+                    <br>
+                </app-input-wrapper>
+                <app-input-wrapper [inputObj]="password" (onChange)="updateMeter()">
+                    <meter value={{value}} min="0" max="3" id="meter"></meter><br>
+                </app-input-wrapper>
+            </div>
+            <hr />
+            <button type="submit" (click)="submit()" class="ok" >OK</button>
+            <hr />
+        </div>
+
+        <hr />
+        <div class="nawigacja">
+            <button type="button" (click)="previousSection()">wstecz</button>
+            <button type="button" (click)="nextSection()">dalej</button>
+        </div>
+
+        <hr />
+
+    </form>
+</div>
